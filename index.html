@@ -9,34 +9,42 @@
 <body>
 	<div ng-controller='ctrl_lottery' id='lottery'>
 		<div id='step1' class='top'>
-			<div class = 'box2'>		
+			<div class = 'box'>		
 				<a href='javascript:void(0)' ng-click='reset()' class='reset'>
-					<img src='img/return_small.jpg'/>Restart
+					<img src='img/return_small.jpg'/>返回
 				</a>
 				<a href='javascript:void(0)' ng-click='edit()' class='edit'>
-					<img src='img/edit_small.jpg'/>Edit Prize
+					<img src='img/edit_small.jpg'/>修改
 				</a>		
-				<button ng-click='start()' class='start_button'>Start</button>
+				<button ng-click='start()' class='start_button'>开始</button>
 			</div>
 			<div ng-repeat='item in items' id='{{item.id}}' class='item' ng-class="{'active':item.status}">
 			{{item.name}}
 			</div>			
 		</div>
 
-		<div id='step2' class='hide'>
-			<div class = 'box1'><button ng-click='stop()' ng-model='stopFlag' class='stop_button'>Stop</button></div>
+		<div id='step2' class='hide top'>
+			<div class = 'box'>		
+				<a href='javascript:void(0)' class='reset'>
+					<img src='img/return_small.jpg'/>返回
+				</a>
+				<a href='javascript:void(0)' class='edit'>
+					<img src='img/edit_small.jpg'/>修改
+				</a>		
+				<div><button ng-click='stop()' ng-model='stopFlag' class='stop_button'>停止</button></div>
+			</div>			
 			<div ng-repeat='item in items' id='{{item.id}}' class='item' ng-class="{'active':item.status}">
 			{{item.name}}
 			</div>
 		</div>
 
 		<div id='step3' class='hide top'>
-			<div class='box2'>
+			<div class='box'>
 				<a href='javascript:void(0)' ng-click='reset()' class='reset'>
-					<img src='img/return_small.jpg'/>Restart
+					<img src='img/return_small.jpg'/>返回
 				</a>
 				<a href='javascript:void(0)' ng-click='edit()' class='edit'>
-					<img src='img/edit_small.jpg'/>Edit Prize
+					<img src='img/edit_small.jpg'/>修改
 				</a>
 				<button class='active result'>{{result}}</button>
 			</div>
@@ -47,18 +55,18 @@
 
 		<div id='step4' class='hide top'>
 			<a href='javascript:void(0)' ng-click='return()' class='reset'>
-					<img src='img/return_small.jpg'/>Return
+					<img src='img/return_small.jpg'/>返回
 			</a>
 			<form name='add_form' ng-submit='add()'>
-					<input type='text' name='input_name' ng-model='name' required placeholder='Name' ng-maxlength='12'>
+					<input type='text' name='input_name' ng-model='name' required placeholder='Name' ng-maxlength='16'>
 					<input class='btn' type='submit' value='Add' ng-disabled='add_form.$invalid'>
-					<div ng-show='add_form.input_name.$error.maxlength' class='errorMsg'>Input name is too long.</div>
+					<div ng-show='add_form.input_name.$error.maxlength' class='errorMsg'>输入名字超过限定长度</div>
 			</form>
 			<ul>
 				<li ng-repeat='item in items'>
 					<span>{{item.id}}</span>
 					<span class='span'>{{item.name}}</span>
-					<a href='javascript:void(0)' ng-click='del(item.id)' class='delete'>Delete</a>
+					<a href='javascript:void(0)' ng-click='del(item.id)' class='delete'>删除</a>
 				</li>
 			</ul>
 		</div>

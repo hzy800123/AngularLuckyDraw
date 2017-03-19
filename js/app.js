@@ -69,7 +69,7 @@ angular.module('lottery', []).
 						// }else{
 						// 	next(0);
 						// }
-					}, 200);
+					}, 150);
 				}
 				next(0);
 			}
